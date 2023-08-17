@@ -1,0 +1,29 @@
+---
+title: "Activities"
+format: html
+editor: visual
+---
+
+## Part 1
+
+Task 1
+
+```{r}
+weekdays <- c("Monday","Tuesday",
+              "Wednesday","Thursday",
+              "Friday","Saturday","Sunday"
+              )
+transect <- c("Transect A","Transect B","Transect C")
+
+#Create a matrix
+
+out_matrix <- matrix(nrow = length(weekdays),ncol = length(transect))
+
+
+for (i in seq_along(weekdays)){
+  for(j in seq_along(transect)){
+    out_matrix[i,j] <- paste(weekdays[i],
+                             "-",transect[j])
+  }
+}
+```
