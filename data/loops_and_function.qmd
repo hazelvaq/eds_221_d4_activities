@@ -4,6 +4,10 @@ format: html
 editor: visual
 ---
 
+```{r}
+library(tidyverse)
+```
+
 ## Part 1
 
 Task 1
@@ -26,4 +30,45 @@ for (i in seq_along(weekdays)){
                              "-",transect[j])
   }
 }
+```
+
+Task 2
+
+```{r}
+force <- function(mass,acceleration){
+  f = mass*acceleration
+  print(paste("The resulting force is",f,"Newtons."))
+}
+
+force(10,2)
+```
+
+Task 3
+
+```{r}
+# Data frame fish_parms
+
+fish_parms <- data.frame(sci_name = c("Chanos chanos",
+                                      "Sphyraena barracuda",
+                                      "Caranax ignobilis"),
+                         common_name = c("Milkfish",
+                                         "Great barracuda",
+                                         "Giant trevally"),
+                         a_est = c(0.0905,0.0181,0.0353),
+                         b_est = c(2.52,3.27,3.05))
+
+## Function as fish_weight
+
+fish_weight <- function(fish_name,tot_length){
+  for (i in seq_along(fish_parms$common_name)){
+     if (fish_name == fish_parms$common_name[i]){
+      weight<- (fish_parms$a_est[i])*(tot_length^fish_parms$b_est[i])
+      print(weight)
+     } 
+  }
+}
+
+#Vector of lengths
+milkfish_lengths <- seq(0,100,1)
+milkfish_weights <- fish_weight("Milkfish",milkfish_lengths)
 ```
