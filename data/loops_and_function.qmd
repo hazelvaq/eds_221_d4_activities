@@ -68,7 +68,43 @@ fish_weight <- function(fish_name,tot_length){
   }
 }
 
+## Much easier way to do and less complicated
+# use filter
+
+fish_weight <- function(fish_name,tot_length){
+  x <- filter(fish_parms,common_name == fish_name)
+  x$a_est*(tot_length^x$b_est)
+}
+
+
 #Vector of lengths
 milkfish_lengths <- seq(0,100,1)
 milkfish_weights <- fish_weight("Milkfish",milkfish_lengths)
+```
+
+Task 4
+
+```{r}
+wave_power <- function(wave_height,period_sec){
+  (0.5*wave_height^2)*period_sec
+}
+
+waveheight <- seq(0,3,0.2)
+wave_power(waveheight,8)
+```
+
+Task 5
+
+```{r}
+wave_energy <- function(water_depth,wave_height,period_sec){
+  if( water_depth > 12){
+    p_deep = (0.5*wave_height^2)*period_sec
+    print(p_deep)
+    message("Deep water equation used")
+  } else if (water_depth <= 12){
+    p_shallow = (0.81*wave_height^2)*period_sec
+    print(p_shallow)
+    message("Shallow water")
+  }
+}
 ```
